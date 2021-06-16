@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap 需要貼在head裡 -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>Movie list</title>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Movie List</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Favorite</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Search Bar  -->
+    <!-- forms---inline-forms -->
+    <div class="container mt-5">
+      <div class="row justify-content-between">
+        <form class="form-inline" id="search-form">
+          <label class="sr-only" for="inlineFormInputName2"
+            >Search Keyword</label
+          >
+          <!-- sr-only=screen reader only只有螢幕閱讀器可以閱讀 -->
+          <input
+            type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="search-input"
+            placeholder="Keyword..."
+          />
+          <button type="submit" class="btn btn-primary mb-2" id="search-submit">
+            Search
+          </button>
+        </form>
+        <div class="d-flex" id="change-Mode">
+          <h3 class="mr-4">
+            <i class="fa fa-th" aria-hidden="true" id="cardMode"></i>
+          </h3>
+          <h3><i class="fa fa-bars" aria-hidden="true" id="listMode"></i></h3>
+        </div>
+      </div>
+
+      <!-- Render Movie List-->
+      <div class="container-fluid mt-4">
+      <div class="row" id="data-panel"></div>
+    </div>
+
+    <!-- paginator -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center" id="paginator">
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+      </ul>
+    </nav>
+
+    <!-- Movie Modal -->
+    <div
+      class="modal fade"
+      id="movie-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="movie-modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id="movie-modal-body">
+            <div class="row">
+              <div class="col-sm-8" id="movie-modal-image"></div>
+              <div class="col-sm-4">
+                <p><em id="movie-modal-date">release date : 2021/05/26</em></p>
+                <p id="movie-modal-description">This is a movie.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://use.fontawesome.com/5e28d0a8ee.js"></script>
+    <!-- //下面有5個套件，都是必須放在html的body內。第一個是axios就是要傳api的網址，第二個是讓這個html可以與js對接，axios必須要放在index.js的前面，因為HTML是由上往下讀取程式碼的。後面接續就是js的套件：jquery、popper以及bootstrap 依序將這些檔案放在 /body 之前-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- axios是用cdn的方式載入 -->
+    <script src="./index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
